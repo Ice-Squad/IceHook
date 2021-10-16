@@ -4,7 +4,7 @@ very basic and minimalistic hooking "library" for windows (x64 support soon)
 Example how to use:
 ```cpp
 typedef void(__stdcall* twglSwapBuffers)(HDC hdc);
-HookSettings wgl_swap_buffers_info;
+HookSettings wgl_swap_buffers_hk_info;
 
 void __stdcall hwglSwapBuffers(HDC hdc) {
 	std::cout << "hooked\n";
@@ -15,15 +15,15 @@ void __stdcall hwglSwapBuffers(HDC hdc) {
 void hooks::InitWglSwapBuffers(){
 	void* addr = (twglSwapBuffers)(GetProcAddress(GetModuleHandleA("opengl32.dll"), "wglSwapBuffers"));
 	
-	wgl_swap_buffers_info.src = addr;
-	wgl_swap_buffers_info.dst = hwglSwapBuffers;
-	wgl_swap_buffers_info.size = 5;
+	wgl_swap_buffers_hk_info.src = addr;
+	wgl_swap_buffers_hk_info.dst = hwglSwapBuffers;
+	wgl_swap_buffers_hk_info.size = 5;
 
-	Hook(wgl_swap_buffers_info);
+	Hook(wgl_swap_buffers_hk_info);
 }
 
 void hooks::UnInitWglSwapBuffers() {
-	UnHook(wgl_swap_buffers_info);
+	UnHook(wgl_swap_buffers_hk_info);
 }
 ```
 <h2>Author: Freshy</h2>
