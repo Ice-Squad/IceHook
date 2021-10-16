@@ -24,6 +24,6 @@ void hooks::InitWglSwapBuffers(){
 
 void hooks::UnInitWglSwapBuffers() {
 	UnHook(wgl_swap_buffers_info);
-}```
-
+}
+```
 <h2>Author: Freshy</h2>
