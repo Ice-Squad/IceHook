@@ -13,7 +13,7 @@ void __stdcall hwglSwapBuffers(HDC hdc) {
 }
 
 void hooks::InitWglSwapBuffers(){
-	void* addr = (twglSwapBuffers)(GetProcAddress(GetModuleHandleA("opengl32.dll"), "wglSwapBuffers"));
+	void* addr = GetProcAddress(GetModuleHandleA("opengl32.dll"), "wglSwapBuffers"));
 	
 	wgl_swap_buffers_hk_info.src = addr;
 	wgl_swap_buffers_hk_info.dst = hwglSwapBuffers;
